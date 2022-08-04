@@ -16,6 +16,7 @@ class Food(Turtle):
         self.speed("fastest")
         self.move()
 
+    # moves turtle to a random location on screen. called by main.py
     def move(self):
         rand_x = randint(-290, 290)
         rand_y = randint(-290, 290)

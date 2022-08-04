@@ -16,6 +16,7 @@ scoreboard = Scoreboard()
 
 screen.listen()
 
+# calls movement functions from snake.py on keypress
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
@@ -41,9 +42,8 @@ while game_is_on:
     if snake.head.ycor() <= -300:
         snake.bottom_collision()
 
-    for segment in snake.segments:
-        if segment == snake.head:
-            continue
+    # detect collision with self (except head)
+    for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_is_on = False
             scoreboard.gameover()

@@ -15,10 +15,12 @@ class Snake:
         self.create_snake()
         self.head = self.segments[0]
 
+    # called in init
     def create_snake(self):
         for position in STARTING_POSITIONS:
             self.add_segment(position)
 
+    # called by extend. appends another turtle to end of self.segments list
     def add_segment(self, position):
         new_segment = Turtle("square")
         new_segment.penup()
@@ -26,9 +28,11 @@ class Snake:
         new_segment.goto(position)
         self.segments.append(new_segment)
 
+    # called when food eaten in main
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
+    # moves snake forward relative to heading
     def move(self):
         for segment_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[segment_num - 1].xcor()
@@ -36,6 +40,7 @@ class Snake:
             self.segments[segment_num].goto(new_x, new_y)
         self.head.forward(MOVE_DISTANCE)
 
+    # direction functions called on keypress in main.py
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
@@ -52,6 +57,7 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
+    # collision functions called in main.py. sends turtle to opposite side of screen
     def right_collision(self):
         self.head.goto(x=self.head.xcor() - 600, y=self.head.ycor())
 

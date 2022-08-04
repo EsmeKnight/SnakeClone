@@ -11,17 +11,20 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.write_score()
 
+    # increases score when food eaten. called in main
     def add(self):
         self.clear()
         self.score += 1
         self.write_score()
 
+    # called by add to write score
     def write_score(self):
         self.pencolor("white")
         self.penup()
         self.goto(0, 267)
         self.write(f"Score: {self.score}", False, ALIGNMENT, (FONT, 24, "normal"))
 
+    # called by main if snake head collides with another snake turtle
     def gameover(self):
         self.pencolor("white")
         self.penup()
