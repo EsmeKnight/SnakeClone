@@ -9,7 +9,7 @@ from random import randint
 class Food(Turtle):
     def __init__(self):
         super().__init__()
-        self.shape("circle")
+        self.shape("square")
         self.color("blue")
         self.penup()
         self.shapesize(0.5, 0.5)
