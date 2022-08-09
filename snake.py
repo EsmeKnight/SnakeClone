@@ -13,6 +13,7 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.create_snake()
+        # assigns first segment as head
         self.head = self.segments[0]
 
     # called in init
@@ -69,3 +70,11 @@ class Snake:
 
     def bottom_collision(self):
         self.head.goto(x=self.head.xcor(), y=300)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.hideturtle()
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+        self.head.goto(0, 0)
